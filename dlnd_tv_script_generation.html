@@ -12987,7 +12987,7 @@ Model Trained and Saved
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[18]:</div>
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
@@ -13026,7 +13026,7 @@ Model Trained and Saved
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[19]:</div>
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">get_tensors</span><span class="p">(</span><span class="n">loaded_graph</span><span class="p">):</span>
@@ -13081,7 +13081,7 @@ Model Trained and Saved
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[20]:</div>
+<div class="prompt input_prompt">In&nbsp;[16]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">operator</span>
@@ -13092,11 +13092,12 @@ Model Trained and Saved
 <span class="sd">    :param int_to_vocab: Dictionary of word ids as the keys and words as the values</span>
 <span class="sd">    :return: String of the predicted word</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">top_n</span> <span class="o">=</span> <span class="mi">5</span>
+    <span class="n">top_n</span> <span class="o">=</span> <span class="mi">3</span>
     <span class="n">p</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(</span><span class="n">probabilities</span><span class="p">)</span>
     <span class="n">p</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">p</span><span class="p">)[:</span><span class="o">-</span><span class="n">top_n</span><span class="p">]]</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="n">p</span> <span class="o">=</span> <span class="n">p</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
     <span class="n">index</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">int_to_vocab</span><span class="p">),</span> <span class="mi">1</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="n">p</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+    
     <span class="n">word</span> <span class="o">=</span> <span class="n">int_to_vocab</span><span class="p">[</span><span class="n">index</span><span class="p">]</span>
     <span class="k">return</span> <span class="n">word</span>
 
@@ -13140,10 +13141,10 @@ Model Trained and Saved
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[21]:</div>
+<div class="prompt input_prompt">In&nbsp;[17]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">gen_length</span> <span class="o">=</span> <span class="mi">200</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">gen_length</span> <span class="o">=</span> <span class="mi">1000</span>
 <span class="c1"># homer_simpson, moe_szyslak, or Barney_Gumble</span>
 <span class="n">prime_word</span> <span class="o">=</span> <span class="s1">&#39;moe_szyslak&#39;</span>
 
@@ -13201,18 +13202,73 @@ Model Trained and Saved
 <div class="prompt"></div>
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>moe_szyslak: yeah. frankly, i&#39;m surprised you&#39;re not across the street where they drink for fun, instead of here.
-homer_simpson:(loud) did you ever see that&#34; blue man group?&#34; total rip-off of realizing.&#34;
-marge_simpson:&#34; dear homie, homer. i guess carl, i been payin&#39; for that billboard outside for a year now, and you can charge it to my players club card...
-moe_szyslak:(laughing) guys, this is frankie from the bar. you gotta know.
+<pre>moe_szyslak: yeah. big deal. you got a wife. i got a rash. who cares?(off the others&#39;)
+ned_flanders: yeah, let me guess you.
+carl_carlson: and i&#39;m magnanimous in victory.
+moe_szyslak: wow, that&#39;s the best at you could ever see that&#34; blue man group?&#34;
+marge_simpson: oh, he&#39;s on the blue man group!
+marge_simpson:(tipsy) i&#39;m just saying that when we die, there&#39;s going to be a children&#39;s story!
+moe_szyslak:(laughs, patting out flames) ah, that&#39;s it.
+lenny_leonard: i just wanna tell you how to do us a favor.
+homer_simpson: wow! i&#39;ve never seen anybody by loaded.
+moe_szyslak: yeah, yeah. take your medicine, ya lush.
+barney_gumble:(gasps) precious alcohol! soaking into shag.
+barney_gumble:(sighs) i guess i&#39;ll dance for a mr. dad, i was thinking more like drapes and a paint job. how did you feel?
+homer_simpson: why? you came to the brain-switching ceremony.
+carll&#34; : because i wanted to get back together with my daughter.
+homer_simpson:(looking at watch) ah. finished with fifteen seconds to the pool.
+moe_szyslak: what? gimme that.
+homer_simpson: i had the greatest guy!
+homer_simpson: moe, the new duff calendars are out! the ones with our focus group.
+moe_szyslak: oh, right. i was just using it as a coaster.
+homer_simpson:(touched) gee, thanks guys. this is just like to me.
+lenny_leonard: sorry, homer. i was born a snake-handler and i&#39;ll die a snake-handler.
 
 
-homer_simpson: okay, gimme that. gimme it. it is done. the dallas cowboys wins super bowl twenty-nine.
-homer_simpson: yes! she loves me!
-moe_szyslak:(defeated) okay.
-moe_szyslak:(chuckles) just, that&#39;s why i don&#39;t want.
-moe_szyslak: i had to get that updated, uh, what are you gonna do with the money, homer. and for a new rope like this.
-moe_szyslak: homer, this is serious. this bashir kid is muslim, a newly-published all right, and
+homer_simpson: moe, i need cash or they&#39;re gonna break my my legs.
+moe_szyslak: well, i gotta hand it to you, homer. and then tonight. i was just using it as a coaster.
+homer_simpson: twenty big ones on denver.
+moe_szyslak:(à la jerry lewis) coins money gold!
+moe_szyslak: see, you got the wrong guy.
+homer_simpson:(awkwardly) you dropped somethin&#39;.
+moe_szyslak: c&#39;mon, homer. you gotta do that.
+homer_simpson:(admitting) it&#39;s true... that&#39;s how i got the money this time.
+moe_szyslak: hey, homer. if you feel so much for some cans / an old man.
+homer_simpson: oh, moe, thank you for saving my precious... gheet!(sighs)
+moe_szyslak:(sympathetic) aw, that&#39;s my little... how about the&#34;(moe) my homer. have a duff!
+moe_szyslak: yeah, i can&#39;t believe you&#39;re making this the worst night of my life.(small laugh)
+moe_szyslak: so, i guess that wraps up!
+grampa_simpson: but it was on the--
+homer_simpson:(dismissive snort) call me when you get a karaoke machine.
+grampa_simpson: that&#39;s the second(raises glass).
+lenny_leonard: yeah, someone who makes our alcoholism seem so much. and then tonight alcohol only made things worse.
+homer_simpson: i just hope we put in enough steampunk, but i am from my very upset with that.
+homer_simpson: oh, don&#39;t worry about. it was a streetcorner.
+moe_szyslak:(singing) when they all should let us be... we belong to you and me.
+moe_szyslak:(pleased) really?
+moe&#39;s_thoughts:(grimly) okay there, moe.
+moe_szyslak: hey, homer.
+homer_simpson: you dirty teen.
+moe_szyslak:(being first, homer) i don&#39;t get my cash out of my cash drawer here.
+moe_szyslak: just what are you just this?
+moe_szyslak: well, if mr. x were here right now, i&#39;d like you... when i catch you, i&#39;m going to pull out your eyes and shove &#39;em up your wife.
+moe_szyslak: hey, barney, hey, what are you doing in here?
+lindsay_naegle: well... what, is that it?
+homer_simpson:(sings) so goodbye...
+chief_wiggum:(sings) my adeleine...
+barney_gumble:(sings) swe-ee-ee-ee-eet adeleine.
+seymour_skinner:(sings) my adeleine...
+moe_szyslak:(sings) i&#39;ve been working on the railroad / all the live long day.
+carl_carlson: hey, mrs. l. those butter cookies you sent were tasty, and the almond ones.
+kent_brockman: dateline: kent. have one of them.
+stillwater: sir, how would you like to be heavyweight champion of the alphabet.
+homer_simpson: yeah, they&#39;re good. but i wouldn&#39;t count out the... denver broncos(lowers glass).
+moe_szyslak:(sings) i believe in youse...(sits up) you?
+homer_simpson:(to dan) i am turning my back, because i don&#39;t know.
+moe_szyslak: that&#39;s the worst name i ever heard.
+barney_gumble:(calling after him) hey, joey joe joe junior...
+homer_simpson:(sly) oh, i don&#39;t know, carl. he might be closer than you think of anything to mumble to myself. that&#39;s how i am a lot of now.
+lenny_leonard: oh, it is stupid. i think it could work, though. i even got a title:. we
 </pre>
 </div>
 </div>
@@ -13231,6 +13287,19 @@ moe_szyslak: homer, this is serious. this bashir kid is muslim, a newly-publishe
 
 </div>
 </div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span> 
+</pre></div>
+
+</div>
+</div>
+</div>
+
 </div>
     </div>
   </div>
